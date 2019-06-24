@@ -3,12 +3,24 @@ exports.up = function(knex) {
     tbl.increments();
 
     tbl
-      .string('username', 255)
+      .string('email', 255)
       .notNullable()
       .unique();
 
     tbl
       .string('password', 255)
+      .notNullable();
+
+    tbl
+      .string('firstName', 255)
+      .notNullable();
+
+    tbl
+      .string('lastName', 255)
+      .notNullable();
+
+    tbl
+      .integer('subscription')
       .notNullable()
   })
 };
