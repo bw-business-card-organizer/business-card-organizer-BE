@@ -3,5 +3,5 @@ const server = require('./api/server');
 const PORT = process.env.PORT || 4000;
 
 server.listen(PORT, () => {
-    console.log(`Business Card Organizer server listening on port ${PORT}`);
+    console.log(`*** Business Card Organizer server listening on port ${PORT} ***`);
 });
