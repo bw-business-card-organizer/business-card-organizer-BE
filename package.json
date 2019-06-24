@@ -1,0 +1,25 @@
+{
+  "name": "business-card-organizer-BE",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bw-business-card-organizer/business-card-organizer-BE.git",
+  "author": "<ney.quentin.michael@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.17.6",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  }
+}
