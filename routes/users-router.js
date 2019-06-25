@@ -13,7 +13,7 @@ module.exports = server => {
 
 function register(req, res) {
   let user = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const hash = bcrypt.hashSync(user.password, 12);
   user.password = hash;
 
@@ -34,9 +34,9 @@ function register(req, res) {
 };
 
 function login(req, res) {
-  let { username, password } = req.body;
+  let { email, password } = req.body;
 
-  Users.findBy({ username })
+  Users.findBy({ email })
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
@@ -45,7 +45,7 @@ function login(req, res) {
         res
           .status(200)
           .json({
-            message: `Welcome, ${user.username}! Here is a token for your troubles!`,
+            message: `Welcome, ${user.firstName}! Here is a token for your troubles!`,
             token
           });
       } else {
