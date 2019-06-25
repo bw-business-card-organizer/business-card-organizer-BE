@@ -41,12 +41,14 @@ router.put('/:id', authenticate, async (req, res) => {
     if (card) {
       res
         .status(200)
-        .json(card);
+        .json({
+          message: "Changes have been successfully made!"
+        });
     } else {
       res
         .status(404)
         .json({
-          message: "This card could not be found"
+          message: "This card could not be found."
         });
     }
   } catch (error) {
@@ -54,6 +56,31 @@ router.put('/:id', authenticate, async (req, res) => {
       .status(500)
       .json({
         message: "There was an error updating this card."
+      });
+  }
+});
+
+router.delete('/:id', authenticate, async (req, res) => {
+  try {
+    const count = await Cards.remove(req.params.id);
+    if (count > 0) {
+      res
+        .status(200)
+        .json({
+          message: "This card has been successfully deleted!"
+        })
+    } else {
+      res
+        .status(404)
+        .json({
+          message: "This card could not be found."
+        })
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "There was an error deleting this card."
       });
   }
 });
