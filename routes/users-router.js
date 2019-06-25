@@ -13,7 +13,6 @@ module.exports = server => {
 
 function register(req, res) {
   let user = req.body;
-  // console.log(req.body);
   const hash = bcrypt.hashSync(user.password, 12);
   user.password = hash;
 
