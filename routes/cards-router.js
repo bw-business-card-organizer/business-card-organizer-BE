@@ -5,6 +5,9 @@ const Cards = require('../data/models/cards-model');
 
 const router = express.Router();
 
+
+// GET REQUESTS
+
 router.get('/', authenticate, async (req, res) => {
   try {
     const cards = await Cards.find();
@@ -20,6 +23,32 @@ router.get('/', authenticate, async (req, res) => {
   }
 });
 
+router.get('/:id', authenticate, async (req, res) => {
+  try {
+    const card = await Cards.findById(req.params.id);
+    if (card) {
+      res
+        .status(200)
+        .json(card)
+    } else {
+      res
+        .status(404)
+        .json({
+          message: 'This card could not be found.'
+        })
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'There was an error retreiving this card.'
+      })
+  }
+})
+
+
+// POST REQUEST
+
 router.post('/', authenticate, async(req, res) => {
   try {
     const card = await Cards.add(req.body);
@@ -34,6 +63,9 @@ router.post('/', authenticate, async(req, res) => {
       });
   }
 });
+
+
+// PUT REQUEST
 
 router.put('/:id', authenticate, async (req, res) => {
   try {
@@ -59,6 +91,9 @@ router.put('/:id', authenticate, async (req, res) => {
       });
   }
 });
+
+
+// DELETE REQUEST
 
 router.delete('/:id', authenticate, async (req, res) => {
   try {
