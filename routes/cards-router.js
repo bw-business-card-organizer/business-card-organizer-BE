@@ -20,4 +20,19 @@ router.get('/', authenticate, async (req, res) => {
   }
 })
 
+router.post('/', authenticate, async(req, res) => {
+  try {
+    const card = await Cards.add(req.body);
+    res
+      .status(201)
+      .json(card);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'There was an error adding this card.'
+      })
+  }
+})
+
 module.exports = router;

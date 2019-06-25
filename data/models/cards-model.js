@@ -20,7 +20,7 @@ function findBy(filter) {
 
 function findById(id) {
   return db('bizCards')
-    .select('id')
+    // .select()
     .where({
       id
     })
@@ -31,7 +31,7 @@ function add(card) {
   return db('bizCards')
     .insert(card)
     .then(ids => {
-      return getById(ids[0]);
+      return findById(ids[0]);
     });
 }
 
