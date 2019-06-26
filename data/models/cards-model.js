@@ -29,7 +29,7 @@ function findById(id) {
 
 function add(card) {
   return db('bizCards')
-    .insert(card)
+    .insert(card, 'id')
     .then(ids => {
       return findById(ids[0]);
     });
