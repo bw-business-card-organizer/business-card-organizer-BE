@@ -1,5 +1,6 @@
+const qr = require('qrcode');
 
-exports.seed = function (knex, Promise) {
+exports.seed =  async function (knex, Promise) {
   return knex('bizCards').insert([
     {
       "id": 1,
@@ -13,7 +14,8 @@ exports.seed = function (knex, Promise) {
       "hours": "10AM-6PM, 7 days a week",
       "email": "rainydayresale@gmail.com",
       "website": "http://www.rainydayresale.com/",
-      "notes": "Pretty cool store!"
+      "notes": "Pretty cool store!",
+      "qrcode": await qr.toDataURL(`${process.env.FRONT_END}/api/cards/1`)
     },
     { 
       "id": 2,
@@ -27,7 +29,8 @@ exports.seed = function (knex, Promise) {
       "hours": "10AM-6PM M-F, 8AM-4PM S-S",
       "email": "downtownbarber@gmail.com",
       "website": "https://www.facebook.com/DowntownBarberKY/",
-      "notes": "Great cuts!"
+      "notes": "Great cuts!",
+      "qrcode": await qr.toDataURL(`${process.env.FRONT_END}/api/cards/2`)
      },
     {
       "id": 3,
@@ -41,7 +44,8 @@ exports.seed = function (knex, Promise) {
       "hours": null,
       "email": "duckingamazing@gmail.com",
       "website": "https://www.facebook.com/Ducking-Amazing-145644865476923/",
-      "notes": "They make pretty awesome wallets."
+      "notes": "They make pretty awesome wallets.",
+      "qrcode": await qr.toDataURL(`${process.env.FRONT_END}/api/cards/3`)
     }
   ]);
 };
