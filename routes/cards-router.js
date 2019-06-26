@@ -1,4 +1,5 @@
 const express = require('express');
+const qr = require('qrcode');
 
 const { authenticate } = require('../auth/authenticate');
 const Cards = require('../data/models/cards-model');
@@ -28,7 +29,7 @@ router.get('/:id', authenticate, async (req, res) => {
     const card = await Cards.findById(req.params.id);
     if (card) {
 
-// code snippet
+
 
       res
         .status(200)
@@ -52,13 +53,14 @@ router.get('/:id', authenticate, async (req, res) => {
 
 // POST REQUEST
 
-router.post('/', authenticate, async(req, res) => {
+router.post('/', authenticate, async (req, res) => {
   try {
     const card = await Cards.add(req.body);
     res
       .status(201)
       .json(card);
   } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json({

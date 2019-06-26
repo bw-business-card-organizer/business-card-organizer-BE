@@ -1,4 +1,6 @@
 const db = require('../dbConfig');
+const qr = require('qrcode');
+
 
 module.exports = {
   find,
@@ -27,20 +29,23 @@ function findById(id) {
     .first();
 }
 
-function add(card) {
-  return db('bizCards')
+async function add(card) {
+  const [createdCard] = await db('bizCards')
     .insert(card, 'id')
-    .then(ids => {
-      return findById(ids[0]);
-    });
+  const foundCard = await findById(createdCard)
+  console.log(createdCard);
+  let qrcode = await qr.toDataURL(`${process.env.FRONT_END}/api/cards/${foundCard.id}`);
+  await update(foundCard.id, { qrcode })
+  const newCard = await findById(foundCard.id);
+  return newCard;
 }
 
 function update(id, changes) {
   return db('bizCards')
-    .where({ 
-      id 
+    .where({
+      id
     })
-    .update(changes);
+    .update(changes, 'id');
 }
 
 function remove(id) {

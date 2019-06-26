@@ -29,6 +29,8 @@ exports.up = function(knex, Promise) {
     tbl.string('website')
 
     tbl.string('notes')
+
+    tbl.string('qrcode')
   })
 };
 
