@@ -2,11 +2,36 @@ const db = require('../dbConfig');
 
 module.exports = {
   findMyCards,
+  findEvents,
+  addEvent,
+  findEventById
 }
 
 function findMyCards(userId) {
   return db('bizCards')
-    // .innerJoin(
+    
+    .where('createdBy', userId)
+}
+
+function findEvents() {
+  return db('bizEvents')
+}
+
+async function addEvent(event) {
+  const [id] = await db('bizEvents')
+    .insert(event, 'id');
+  return findEventById(id);
+}
+
+function findEventById(id) {
+  return db('bizEvents')
+    .where({
+      id
+    })
+    .first();
+}
+
+// .innerJoin(
     //   'bizCollections', 
     //   'bizCollections.cardId', 
     //   'bizCards.id'
@@ -16,13 +41,3 @@ function findMyCards(userId) {
     //   'bizCollections.userID',
     //   'bizUsers.id'
     // )
-    // .innerJoin(
-    //   'bizUsers',
-    //   'bizCards.createdBy',
-    //   'bizUsers.id'
-    // )
-    .where('createdBy', userId)
-    // where userId
-
-    // createdBy / holder
-}
