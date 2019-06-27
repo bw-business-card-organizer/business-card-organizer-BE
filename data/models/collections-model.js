@@ -13,10 +13,10 @@ function findMyCards(userId) {
     )
     .innerJoin(
       'bizUsers',
-      'bizCollections.userId',
+      'bizCards.createdBy',
       'bizUsers.id'
     )
-    .where('bizCards.myCard', '1')
+    .where('createdBy', userId)
     // where userId
 
     // createdBy / holder

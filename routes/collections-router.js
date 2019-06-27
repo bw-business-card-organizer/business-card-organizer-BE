@@ -9,6 +9,7 @@ router.get('/', authenticate, async (req, res) => {
   try {
     const myCards = await Collections.findMyCards(req.decoded.subject);
     console.log(myCards);
+    console.log('rds:', req.decoded.subject);
     res
       .status(200)
       .json(myCards);
