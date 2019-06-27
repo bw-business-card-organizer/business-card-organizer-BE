@@ -4,7 +4,7 @@ module.exports = {
   findMyCards,
 }
 
-function findMyCards() {
+function findMyCards(userId) {
   return db('bizCards')
     .innerJoin(
       'bizCollections', 
@@ -17,4 +17,7 @@ function findMyCards() {
       'bizUsers.id'
     )
     .where('bizCards.myCard', '1')
+    // where userId
+
+    // createdBy / holder
 }

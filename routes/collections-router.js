@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', authenticate, async (req, res) => {
   try {
-    const myCards = await Collections.findMyCards();
+    const myCards = await Collections.findMyCards(req.decoded.subject);
     console.log(myCards);
     res
       .status(200)
