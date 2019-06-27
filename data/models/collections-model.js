@@ -6,16 +6,16 @@ module.exports = {
 
 function findMyCards() {
   return db('bizCards')
-    // .select('*')
+    .select('*')
     .innerJoin(
       'bizCollections', 
       'bizCollections.cardId', 
       'bizCards.id'
     )
     .innerJoin(
-      'bizCollections',
+      'bizUsers',
       'bizCollections.userId',
       'bizUsers.id'
     )
-    .where('bizCards.myCard', 1)
+    .where('bizCards.myCard', '1')
 }

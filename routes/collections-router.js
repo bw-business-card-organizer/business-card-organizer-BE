@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/', authenticate, async (req, res) => {
   try {
     const myCards = await Collections.findMyCards();
+    console.log(myCards);
     res
       .status(200)
       .json(myCards);
