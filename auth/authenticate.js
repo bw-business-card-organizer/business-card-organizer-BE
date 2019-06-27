@@ -34,7 +34,7 @@ function authenticate(req, res, next) {
 function generateToken(user) {
   const payload = {
     subject: user.id,
-    username: user.username
+    username: user.email
   };
   const options = {
     expiresIn: '1d'

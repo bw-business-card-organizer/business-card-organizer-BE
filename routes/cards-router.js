@@ -28,9 +28,6 @@ router.get('/:id', authenticate, async (req, res) => {
   try {
     const card = await Cards.findById(req.params.id);
     if (card) {
-
-
-
       res
         .status(200)
         .json(card)

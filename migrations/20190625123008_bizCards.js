@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = function (knex, Promise) {
   return knex.schema.createTable('bizCards', tbl => {
     tbl.increments();
 
@@ -30,10 +30,18 @@ exports.up = function(knex, Promise) {
 
     tbl.string('notes')
 
-    tbl.string('qrcode')
+    tbl.text('qrcode')
+
+    tbl
+      .integer('createdBy')
+      .unsigned()
+      .references('id')
+      .inTable('bizUsers')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
   })
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex, Promise) {
   return knex.schema.dropTableIfExists('bizCards');
 };
