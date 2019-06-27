@@ -16,7 +16,7 @@ exports.seed =  async function (knex, Promise) {
       "website": "http://www.rainydayresale.com/",
       "notes": "Pretty cool store!",
       "qrcode": await qr.toDataURL(`${process.env.FRONT_END}/api/cards/1`),
-      "myCard": true
+      "createdBy": 2
     },
     { 
       "id": 2,
@@ -32,7 +32,7 @@ exports.seed =  async function (knex, Promise) {
       "website": "https://www.facebook.com/DowntownBarberKY/",
       "notes": "Great cuts!",
       "qrcode": await qr.toDataURL(`${process.env.FRONT_END}/api/cards/2`),
-      "myCard": false
+      "createdBy": 3
      },
     {
       "id": 3,
@@ -48,7 +48,7 @@ exports.seed =  async function (knex, Promise) {
       "website": "https://www.facebook.com/Ducking-Amazing-145644865476923/",
       "notes": "They make pretty awesome wallets.",
       "qrcode": await qr.toDataURL(`${process.env.FRONT_END}/api/cards/3`),
-      "myCard": true
+      "createdBy": 1    
     }
   ]);
 };

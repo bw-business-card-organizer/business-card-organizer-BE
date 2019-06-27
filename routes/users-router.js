@@ -8,7 +8,22 @@ const Users = require('../data/models/users-model');
 
 module.exports = server => {
   server.post('/api/register', register);
-  server.post('/api/login', login)
+  server.post('/api/login', login);
+  server.get('/api/users', authenticate, getUsers);
+}
+
+function getUsers(req, res) {
+  Users.find()
+    .then(users => {
+      res
+        .status(200)
+        .json(users)
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .json(error);
+    });
 }
 
 function register(req, res) {
