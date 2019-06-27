@@ -31,6 +31,10 @@ exports.up = function(knex, Promise) {
     tbl.string('notes')
 
     tbl.string('qrcode')
+
+    tbl
+      .boolean('myCard')
+      .defaultTo(true)
   })
 };
 
