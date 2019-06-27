@@ -30,7 +30,7 @@ exports.up = function (knex, Promise) {
 
     tbl.string('notes')
 
-    tbl.string('qrcode')
+    tbl.text('qrcode')
 
     tbl
       .integer('createdBy')
