@@ -33,7 +33,7 @@ async function add(card) {
     .insert(card, 'id')
   const foundCard = await findById(createdCard)
   console.log(createdCard);
-  let qrcode = await qr.toDataURL(`${process.env.FRONT_END}/api/cards/${foundCard.id}`);
+  let qrcode = await qr.toDataURL(`${process.env.FRONT_END}/${foundCard.id}`);
   await update(foundCard.id, { qrcode })
   const newCard = await findById(foundCard.id);
   return newCard;
