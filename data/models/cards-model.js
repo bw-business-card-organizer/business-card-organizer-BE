@@ -22,7 +22,6 @@ function findBy(filter) {
 
 function findById(id) {
   return db('bizCards')
-    // .select()
     .where({
       id
     })

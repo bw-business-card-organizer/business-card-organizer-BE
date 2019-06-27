@@ -6,7 +6,6 @@ module.exports = {
 
 function findMyCards() {
   return db('bizCards')
-    .select('*')
     .innerJoin(
       'bizCollections', 
       'bizCollections.cardId', 
