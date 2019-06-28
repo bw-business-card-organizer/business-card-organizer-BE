@@ -4,7 +4,8 @@ module.exports = {
   findMyCards,
   findEvents,
   addEvent,
-  findEventById
+  findEventById,
+  findEventCards
 }
 
 function findMyCards(userId) {
@@ -31,13 +32,7 @@ function findEventById(id) {
     .first();
 }
 
-// .innerJoin(
-    //   'bizCollections', 
-    //   'bizCollections.cardId', 
-    //   'bizCards.id'
-    // )
-    // .innerJoin(
-    //   'bizUsers',
-    //   'bizCollections.userID',
-    //   'bizUsers.id'
-    // )
+function findEventCards(eventId) {
+  return db('bizCards')
+    .where('eventId', eventId)
+}

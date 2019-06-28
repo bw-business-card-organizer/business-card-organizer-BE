@@ -37,8 +37,12 @@ exports.up = function (knex, Promise) {
       .unsigned()
       .references('id')
       .inTable('bizUsers')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
+
+    tbl
+      .integer('eventId')
+      .unsigned()
+      .references('id')
+      .inTable('bizEvents')
   })
 };
 
