@@ -7,16 +7,13 @@ exports.up = function(knex, Promise) {
         .unsigned()
         .references('id')
         .inTable('bizUsers')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
+
 
       tbl
         .integer('cardId')
         .unsigned()
         .references('id')
         .inTable('bizCards')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
     })
 };
 
