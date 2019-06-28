@@ -52,4 +52,32 @@ router.post('/events', authenticate, async (req, res) => {
   }
 })
 
+
+router.get('/events/:id', authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const event = await Collections.findEventCards(id);
+    
+    if (event) {
+      console.log(event)
+      res
+        .status(200)
+        .json(event)
+    } else {
+      res
+        .status(404)
+        .json({
+          message: 'This event could not be found.'
+        })
+    }
+  } catch (error) {
+    console.log(error)
+    res
+      .status(500)
+      .json({
+        message: 'There was an error retreiving this event.'
+      })
+  }
+})
+
 module.exports = router;
