@@ -47,33 +47,6 @@ function register(req, res) {
     });
 };
 
-// function register(req, res) {
-//   let user = req.body;
-//   const hash = bcrypt.hashSync(user.password, 12);
-//   user.password = hash;
-//   Users.findBy({ email })
-//     .then(found => {
-//       if (found) {
-//         res
-//           .status()
-//       }
-//     })
-//   Users.add(user)
-//     .then(saved => {
-//       res
-//         .status(201)
-//         .json({
-//           message: 'This new user has been successfully registered!',
-//           saved
-//         });
-//     })
-//     .catch(error => {
-//       res
-//         .status(500)
-//         .json(error);
-//     });
-// };
-
 function login(req, res) {
   let { email, password } = req.body;
 

@@ -32,7 +32,6 @@ async function add(card) {
   const [createdCard] = await db('bizCards')
     .insert(card, 'id')
   const foundCard = await findById(createdCard)
-  console.log(createdCard);
   let qrcode = await qr.toDataURL(`${process.env.FRONT_END}/${foundCard.id}`);
   await update(foundCard.id, { qrcode })
   const newCard = await findById(foundCard.id);
